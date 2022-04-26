@@ -13,11 +13,11 @@ module.exports = {
   fetchReviewsData(sort, productID = 65632, page = 1, count = 5) {
     return new Promise((resolve, reject) => {
       if (sort) {
-        axios.get(`${url}/reviews?product_id=${productID}&page=${page}&count=${count}&sort=${sort}`, config)
+        axios.get(`http://localhost:3005/reviews?product_id=${productID}&page=${page}&count=${count}&sort=${sort}`, config)
           .then((res) => resolve(res.data))
           .catch((err) => reject(err));
       } else {
-        axios.get(`${url}/reviews?product_id=${productID}&page=${page}&count=${count}`, config)
+        axios.get(`http://localhost:3005/reviews?product_id=${productID}&page=${page}&count=${count}`, config)
           .then((res) => resolve(res.data))
           .catch((err) => reject(err));
       }
@@ -26,7 +26,7 @@ module.exports = {
 
   fetchReviewMeta(productID = '65632') {
     return new Promise((resolve, reject) => {
-      axios.get(`${url}/reviews/meta?product_id=${productID}`, config)
+      axios.get(`http://localhost:3005/reviews/meta?product_id=${productID}`, config)
         .then((res) => resolve(res.data))
         .catch((err) => reject(err));
     });
@@ -34,7 +34,7 @@ module.exports = {
 
   addReview(data) {
     return new Promise((resolve, reject) => {
-      axios.post(`${url}/reviews`, data, config)
+      axios.post(`$http://localhost:3005/reviews`, data, config)
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
@@ -42,7 +42,7 @@ module.exports = {
 
   markReviewAsHelpful(reviewID = 1136190) {
     return new Promise((resolve, reject) => {
-      axios.put(`${url}/reviews/${reviewID}/helpful`, '', config)
+      axios.put(`http://localhost:3005/reviews/${reviewID}/helpful`, '', config)
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
@@ -50,7 +50,7 @@ module.exports = {
 
   reportReview(reviewID = '1136190') {
     return new Promise((resolve, reject) => {
-      axios.put(`${url}/reviews/${reviewID}/report`, '', config)
+      axios.put(`http://localhost:3005/reviews/${reviewID}/report`, '', config)
         .then((res) => resolve(res))
         .catch((err) => reject(err));
     });
